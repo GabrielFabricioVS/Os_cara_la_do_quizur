@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Os cara la do quizur 💜</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- CAMADA TRANSPARENTE PARA O EFEITO DA BATIDA SEM DESTRUIR O GRADIENTE -->
+    <div id="bg-pulse"></div>
+
+    <!-- POPUP DE DICA FLUTUANTE -->
+    <div id="popup-dica" class="popup-dica escondido">
+        Me manda beijinho e eu penso se te dou dica 🥰
+    </div>
+
+    <!-- CAIXA PRINCIPAL DO QUIZ -->
+    <div class="card" id="quiz-card">
+        <div class="header">
+            <span id="contador-pergunta">Pergunta 1 de 9</span>
+            
+            <!-- BOTÃO DE DICA -->
+            <button id="btn-dica" class="btn-dica" onclick="mostrarDica()">💡 Dica</button>
+            
+            <span id="timer-display" class="timer-badge">⏳ 01:00</span>
+        </div>
+        
+        <h2 id="texto-pergunta">Carregando pergunta...</h2>
+        
+        <!-- BLOCO 1: PERGUNTAS DE TEXTO (DIGITAR) -->
+        <div id="bloco-texto">
+            <div class="pista-container">
+                <p>Dica progressiva:</p>
+                <div id="pista-resposta" class="pista">_ _ _ _</div>
+            </div>
+
+            <div class="input-container">
+                <input type="text" id="resposta-input" placeholder="Digite sua resposta..." autocomplete="off">
+                <button onclick="responderTexto()">Enviar</button>
+            </div>
+        </div>
+
+        <!-- BLOCO 2: PERGUNTAS DE FOTOS (CLICAR) -->
+        <div id="bloco-fotos" class="escondido">
+            <p class="instrucao-foto">Clique na foto certa:</p>
+            <div id="opcoes-fotos-container" class="opcoes-fotos">
+                <!-- As fotos serão geradas dinamicamente via JS -->
+            </div>
+        </div>
+
+        <!-- MENSAGEM DE FEEDBACK -->
+        <p id="mensagem-feedback" class="feedback"></p>
+
+        <!-- BOTOES DE NAVEGAÇÃO -->
+        <div class="nav-container">
+            <button id="btn-voltar" class="btn-nav" onclick="perguntaAnterior()">⬅ Voltar</button>
+            <button id="btn-prosseguir" class="btn-nav" onclick="proximaPergunta()">Prosseguir ➡</button>
+        </div>
+    </div>
+
+    <!-- TELA FINAL -->
+    <div class="card escondido" id="tela-final">
+        <h2>Você acertou tudo! 🎉💖</h2>
+        <p>Você me conhece tão bem... Obrigado por cada momento nosso!</p>
+    </div>
+
+    <!-- OVERLAY FLUTUANTE PARA O GIF -->
+    <div id="overlay-gif" class="overlay-gif escondido">
+        <img id="gif-animacao" src="" alt="Animação GIF">
+    </div>
+
+    <!-- CONTAINER FLUTUANTE DE MÚSICA E VOLUME -->
+    <div class="music-container">
+        <button id="btn-musica" class="btn-musica" onclick="alternarMusica()">🎵 Música: OFF</button>
+        
+        <!-- CONTROLE DE VOLUME -->
+        <div class="volume-box">
+            <span>🔊</span>
+            <input type="range" id="volume-slider" class="volume-slider" min="0" max="100" step="1" value="50" oninput="ajustarVolume(this.value)">
+        </div>
+    </div>
+    
+    <audio id="audio-fundo" src="m1.mp3" loop></audio>
+    <script src="script.js"></script>
+</body>
+</html>
